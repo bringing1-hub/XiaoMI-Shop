@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -21,11 +21,50 @@
     </header>
 
     <main class="container page-main">
-        <section class="page-title">
-            <h1>商品详情</h1>
+        <section class="detail-box">
+            <div class="detail-image">
+                <div class="big-product-img"><img src="images\pms_1730124020.85532513.png" alt="Xiaomi 15" class="phone-img"></div>
+            </div>
+
+            <div class="detail-info">
+                <h1>Xiaomi 15</h1>
+                <p class="detail-desc">新一代旗舰手机，搭载高性能处理器，支持高清影像拍摄和长续航体验。</p>
+                <p class="detail-price">3999 元起</p>
+
+                <div class="option-group">
+                    <h3>选择版本</h3>
+                    <div class="option-list" data-group="ram">
+                        <button class="option-btn active" type="button">12GB + 256GB</button>
+                        <button class="option-btn" type="button">12GB + 512GB</button>
+                        <button class="option-btn" type="button">16GB + 1TB</button>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <h3>选择颜色</h3>
+                    <div class="option-list" data-group="color">
+                        <button class="option-btn active" type="button" data-img="images\pms_1730124020.85532513.png">黑色</button>
+                        <button class="option-btn" type="button" data-img="images\pms_1730124020.81653464.png">白色</button>
+                        <button class="option-btn" type="button" data-img="images\pms_1730124020.81975836.png">绿色</button>
+                    </div>
+                </div>
+
+                <div class="detail-actions">
+                    <a class="buy-button" href="cart.html">加入购物车</a>
+                    <a class="back-button" href="products.html">返回列表</a>
+                </div>
+            </div>
         </section>
 
-        <!-- 本页内容由对应负责人继续开发 -->
+        <section class="detail-params">
+            <h2>商品参数</h2>
+            <ul>
+                <li>屏幕：高刷新率 OLED 屏幕</li>
+                <li>处理器：旗舰性能处理器</li>
+                <li>影像：高清主摄，支持多种拍摄模式</li>
+                <li>续航：大容量电池，支持快速充电</li>
+            </ul>
+        </section>
     </main>
 
     <footer class="site-footer">
@@ -33,5 +72,25 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>const imgBox = document.querySelector('.phone-img');
+
+// 处理内存版本按钮
+const ramBtns = document.querySelectorAll('[data-group="ram"] .option-btn');
+ramBtns.forEach(btn => {
+  btn.onclick = function(){
+    ramBtns.forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+  }
+})
+
+// 处理颜色按钮（切换图片+本组选中）
+const colorBtns = document.querySelectorAll('[data-group="color"] .option-btn');
+colorBtns.forEach(btn => {
+  btn.onclick = function(){
+    colorBtns.forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    imgBox.src = this.dataset.img;
+  }
+})</script>
 </body>
 </html>
